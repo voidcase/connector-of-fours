@@ -42,11 +42,14 @@ class Connect4Game:
         board = self.board
         w = self.width
         h = self.height
-        if 0<=col-1<w and len(board[col-1])<h:
-            board[col-1].append(p)
+        if 0<=col<w and len(board[col])<h:
+            board[col].append(p)
 
     def empty_board(self):
         return [[] for i in range(self.width)]
+
+    def is_full(self):
+        return all([len(col) >= self.height for col in self.board])
 
 if __name__ == '__main__':
     game = Connect4Game()
